@@ -1,6 +1,10 @@
-const {Before} = require('cucumber');
-const {start} = require('../../index')
+const {BeforeAll, AfterAll} = require('cucumber');
+const {start,stop} = require('../../index')
 
-Before(function() {
+BeforeAll(function() {
         start()
 })    
+
+AfterAll(function() {
+        stop()
+})
