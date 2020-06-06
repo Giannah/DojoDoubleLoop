@@ -1,5 +1,6 @@
-const { calculateTotalPrice } = require('../price-calculator')
+const Calculator = require('../models/price-calculator')
 
+const calculator = new Calculator()
 class PriceController {
   getPrice(req, res) {
     const data = req.body
@@ -9,7 +10,7 @@ class PriceController {
       const quantity = data.numberOfItems
       const state = data.state
 
-      const result = calculateTotalPrice(price, quantity, state)
+      const result = calculator.calculateTotalPrice(price, quantity, state)
 
       res.status(200).send({ totalPrice: result })
     } catch (err) {
